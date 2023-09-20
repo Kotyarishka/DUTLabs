@@ -1,21 +1,60 @@
-﻿// DUTLabs.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <cmath>
 
-#include <iostream>
+using namespace std;
+
+void problem1();
+void problem2();
 
 int main()
 {
-    std::cout << "Hello World!\n";
+  string variant;
+  cout << "Enter number of the problem (1 or 2):";
+
+  cin >> variant;
+
+  if (variant == "1") {
+		problem1();
+  }
+  else if (variant == "2") {
+		problem2();
+  }
+  else {
+		cout << "Wrong number of the problem" << endl;
+	}
+
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+void problem1() {
+  double a;
+  double b;
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-// 
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+  cout << "Problem 1 solution" << endl;
+  
+  cout << "Enter a:";
+  cin >> a;
+  
+  cout << "Enter b:";
+  cin >> b;
+
+  double result = pow(0.315 * log(a) / (1 + pow(0.711 * log(b) / (1 + pow(log(b / a), 1.0 / 3)), 1.0 / 3)), 1.0 / 3);  
+
+  cout << "Result:" << result << endl;
+}
+
+void problem2() {
+  cout << "Problem 2 solution" << endl;
+
+  double a;
+  double b;
+
+  cout << "Enter a:";
+  cin >> a;
+
+  cout << "Enter b:";
+  cin >> b;
+
+  double result = 8.15 * pow(b, 1.0 / 3) * log(a) / (24.38 * cos(b) * (exp(a) - pow(a, a)));
+
+  cout << "Result:" << result << endl;
+}
