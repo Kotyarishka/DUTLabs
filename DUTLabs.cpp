@@ -23,50 +23,62 @@ int main() {
 }
 
 void problem1() {
-	double x; double A; double C;
+	int n;
+	cout << "Enter n: ";
+	cin >> n;
 
-	cout << "Enter x: ";
-	cin >> x;
+	int firstDigit = n / 100;
+	int secondDigit = (n / 10) % 10;
+	int thirdDigit = n % 10;
 
-	cout << "Enter A: ";
-	cin >> A;
+	int evenDigitsCount = 0;
 
-	cout << "Enter C: ";
-	cin >> C;
-
-	if (A == C) {
-		double result = x * pow((A - C), 2);
-		double result2 = x + pow(A, 3);
-
-		cout << "Result: " << result << endl;
-		cout << "Result2: " << result2 << endl;
+	if (firstDigit % 2 == 0) {
+		evenDigitsCount++;
 	}
-	else {
-		double result = pow(x, 3) - A;
 
-		cout << "Result: " << result << endl;
+	if (secondDigit % 2 == 0) {
+		evenDigitsCount++;
 	}
+
+	if (thirdDigit % 2 == 0) {
+		evenDigitsCount++;
+	}
+
+	cout << "Even digits count: " << evenDigitsCount << endl;
 }
 
 void problem2() {
-	double x; double y;
+	// Ввести номер поїзда і вивести час його відправлення.
 
-	cout << "Enter x: ";
-	cin >> x;
+	int trainNumber;
+	cout << "Enter train number: ";
+	cin >> trainNumber;
 
-	cout << "Enter y: ";
-	cin >> y;
-
-	double lineEquation = -1 * x +1;
-	double lineEquation2 = x + 1;
-	double lineEquation3 = x - 1;
-
-	// -1 < x < 1
-
-	if (-1 <= x && x <= 1 && y >= lineEquation && y >= lineEquation2 && y >= lineEquation3) {
-		cout << "Point is inside the triangle" << endl;
-	}
-	else {
-		cout << "Point is outside the triangle" << endl;
+	switch (trainNumber) {
+		case 1:
+			cout << "Train 1 departs at 8:00" << endl;
+			break;
+		case 2:
+			cout << "Train 2 departs at 9:00" << endl;
+			break;
+		case 3:
+			cout << "Train 3 departs at 10:00" << endl;
+			break;
+		case 4:
+			cout << "Train 4 departs at 11:00" << endl;
+			break;
+		case 5:
+			cout << "Train 5 departs at 12:00" << endl;
+			break;
+		case 6:
+			cout << "Train 6 departs at 13:00" << endl;
+			break;
+		case 7:
+			cout << "Train 7 departs at 14:00" << endl;
+			break;
+		default:
+			cout << "Invalid train number" << endl;
+			break;
 	}
 }
