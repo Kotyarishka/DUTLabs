@@ -7,7 +7,6 @@ using namespace std;
 void problem1();
 void problem2();
 void problem3();
-void problem4();
 
 int main() {
 	int problemNumber;
@@ -25,75 +24,71 @@ int main() {
 		case 3:
 			problem3();
 			break;
-		case 4:
-			problem4();
-			break;
 	}
 }
 
 void problem1() {
-	bool answer;
-	int value;
+	for (int i = 1; i <= 5; i++) {
+		int x;
 
-	cout << "Enter a value: ";
-	cin >> value;
+		cout << "Enter a number: ";
+		cin >> x;
 
-	answer = (value >= 0 && value < 10) || (value * 2 < 20 && value - 2 > -2) || (value - 1 > 1 && value / 2 < 10) || value == 111;
-	
-	cout << (answer ? "THAT'S TRUE :)" : "THAT'S NOT TRUE :(") << endl;
+		double result = pow(sin(x), 5) + abs(5 * x - 1.5);
+		cout << fixed << setprecision(2) << result << endl;
+	}
 }
 
 void problem2() {
-	double var1, var2, var3, var4, var5;
+	int product = 1;
 
-	cout << "Enter 5 numbers: ";
-	cin >> var1 >> var2 >> var3 >> var4 >> var5;
+	for (int i = 1; i <= 10; i++) {
+		int x;
 
-	cout << fixed << setprecision(1) << var1 << endl;
-	cout << fixed << setprecision(2) << var2 << endl;
-	cout << fixed << setprecision(6) << var3 << endl;
-	cout << fixed << setprecision(2) << var4 << endl;
-	cout << fixed << setprecision(0) << var5 << endl;
+		cout << "Enter a number: ";
+		cin >> x;
+
+		if (x < 0) {
+			cout << "Number must be positive" << endl;
+			exit(1);
+		}
+
+		product *= x;
+	}
+
+	cout << "Product: " << product << endl;
 }
 
 void problem3() {
-	int num1, num2;
-	float epsilon = 0.000001f;
+	double a, b, h;
 
-	cout << "Enter two numbers: ";
-	cin >> num1 >> num2;
+	cout << "Enter beginning: ";
+	cin >> a;
 
-	if (num1 == 0 || num2 == 0) {
-		cout << "Cannot divide by zero" << endl;
-		exit(1);
+	cout << "Enter end: ";
+	cin >> b;
+
+	cout << "Enter step: ";
+	cin >> h;
+
+	cout << "---------------------" << endl;
+	cout << ":    x    :    y    :" << endl;
+	cout << "---------------------" << endl;
+
+
+	auto fnc = [](double x) {
+		return sqrt(cos(x)) + sin(x);
+		};
+
+	for (double x = a; x <= b; x += h) {
+		if (cos(x) < 0) {
+			cout << "---------------------" << endl;
+			cout << "invalid value for cos(x), x: " << x << endl;
+			exit(1);
+		}
+
+		cout << ": " << setw(7) << x << " : " << setw(7) << fnc(x) << " :" << endl;
 	}
 
-	float division1 = 1.0f / num1;
-	float division2 = 1.0f / num2;
-
-	if (abs(division1 - division2) < epsilon) {
-		cout << "Results are equal (by 0.000001 epsilon)" << endl;
-	}
-	else {
-		cout << "Results are not equal (by 0.000001 epsilon)" << endl;
-	}
-}
-
-void problem4() {
-	int num1, num2, num3, num4;
-
-	cout << "Enter four numbers: ";
-	cin >> num1 >> num2 >> num3 >> num4;
-
-	if (
-		num1 >= 1 && num1 <= 255 &&
-		num2 >= 1 && num2 <= 255 &&
-		num3 >= 1 && num3 <= 255 &&
-		num4 >= 1 && num4 <= 255
-		) {
-		cout << "IP Address: " << num1 << "." << num2 << "." << num3 << "." << num4 << endl;
-	}
-	else {
-		cout << "Invalid IP Address" << endl;
-	}
+	cout << "---------------------" << endl;
 }
