@@ -6,55 +6,67 @@ using namespace std;
 void problem1();
 void problem2();
 
-int main()
-{
-  string variant;
-  cout << "Enter number of the problem (1 or 2):";
+int main() {
+	int problemNumber;
 
-  cin >> variant;
+	cout << "Enter problem number (1, 2): ";
+	cin >> problemNumber;
 
-  if (variant == "1") {
-		problem1();
-  }
-  else if (variant == "2") {
-		problem2();
-  }
-  else {
-		cout << "Wrong number of the problem" << endl;
+	switch (problemNumber) {
+		case 1:
+			problem1();
+			break;
+		case 2:
+			problem2();
+			break;
 	}
-
 }
 
 void problem1() {
-  double a;
-  double b;
+	double x; double A; double C;
 
-  cout << "Problem 1 solution" << endl;
-  
-  cout << "Enter a:";
-  cin >> a;
-  
-  cout << "Enter b:";
-  cin >> b;
+	cout << "Enter x: ";
+	cin >> x;
 
-  double result = pow(0.315 * log(a) / (1 + pow(0.711 * log(b) / (1 + pow(log(b / a), 1.0 / 3)), 1.0 / 3)), 1.0 / 3);  
+	cout << "Enter A: ";
+	cin >> A;
 
-  cout << "Result:" << result << endl;
+	cout << "Enter C: ";
+	cin >> C;
+
+	if (A == C) {
+		double result = x * pow((A - C), 2);
+		double result2 = x + pow(A, 3);
+
+		cout << "Result: " << result << endl;
+		cout << "Result2: " << result2 << endl;
+	}
+	else {
+		double result = pow(x, 3) - A;
+
+		cout << "Result: " << result << endl;
+	}
 }
 
 void problem2() {
-  cout << "Problem 2 solution" << endl;
+	double x; double y;
 
-  double a;
-  double b;
+	cout << "Enter x: ";
+	cin >> x;
 
-  cout << "Enter a:";
-  cin >> a;
+	cout << "Enter y: ";
+	cin >> y;
 
-  cout << "Enter b:";
-  cin >> b;
+	double lineEquation = -1 * x +1;
+	double lineEquation2 = x + 1;
+	double lineEquation3 = x - 1;
 
-  double result = 8.15 * pow(b, 1.0 / 3) * log(a) / (24.38 * cos(b) * (exp(a) - pow(a, a)));
+	// -1 < x < 1
 
-  cout << "Result:" << result << endl;
+	if (-1 <= x && x <= 1 && y >= lineEquation && y >= lineEquation2 && y >= lineEquation3) {
+		cout << "Point is inside the triangle" << endl;
+	}
+	else {
+		cout << "Point is outside the triangle" << endl;
+	}
 }
