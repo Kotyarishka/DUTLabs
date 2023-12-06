@@ -69,7 +69,6 @@ void problem1() {
 
   if (time.minutes < 10) {
 		minutes = "0" + minutes;
-		return;
 	}
 
 	cout << "Time: " << time.hours << ":" << minutes << endl;
@@ -125,11 +124,10 @@ void problem2() {
     return;
   }
 
-  string strMinutes = to_string(time.minutes);
+  string strMinutes = to_string(minutes);
 
-  if (time.minutes < 10) {
+  if (minutes < 10) {
     strMinutes = "0" + minutes;
-    return;
   }
 
 	cout << "Time: " << hours << ":" << strMinutes << endl;
