@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,20 +26,20 @@ int main()
 }
 
 void problem1() {
-  double a;
-  double b;
+  const int m = 4;
+  const int n = 3;
 
-  cout << "Problem 1 solution" << endl;
-  
-  cout << "Enter a:";
-  cin >> a;
-  
-  cout << "Enter b:";
-  cin >> b;
+  int arr[m][n]{ {} };
 
-  double result = pow(0.315 * log(a) / (1 + pow(0.711 * log(b) / (1 + pow(log(b / a), 1.0 / 3)), 1.0 / 3)), 1.0 / 3);  
+  srand(time(NULL));
 
-  cout << "Result:" << result << endl;
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+			arr[i][j] = rand() % 200 - 100;
+		}
+  }
+
+
 }
 
 void problem2() {
