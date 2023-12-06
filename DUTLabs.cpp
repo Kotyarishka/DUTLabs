@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -64,7 +65,14 @@ void problem1() {
 		time.hours %= 24;
 	}
 
-	cout << "Time: " << time.hours << ":" << time.minutes << endl;
+  string minutes = to_string(time.minutes);
+
+  if (time.minutes < 10) {
+		minutes = "0" + minutes;
+		return;
+	}
+
+	cout << "Time: " << time.hours << ":" << minutes << endl;
 }
 
 void problem2() {
@@ -117,6 +125,13 @@ void problem2() {
     return;
   }
 
-	cout << "Time: " << hours << ":" << minutes << endl;
+  string strMinutes = to_string(time.minutes);
+
+  if (time.minutes < 10) {
+    strMinutes = "0" + minutes;
+    return;
+  }
+
+	cout << "Time: " << hours << ":" << strMinutes << endl;
 }
 
