@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -24,99 +25,96 @@ int main()
 
 }
 
-struct Time {
-  int hours;
-  int minutes;
-};
-
 void problem1() {
-  Time time{};
+  const int arrSize = 12;
 
-  int minutesToAdd = 0;
+  int arr[arrSize]{};
 
-  cout << "Enter hours: ";
-  cin >> time.hours;
+  srand(time(NULL));
 
-  cout << "Enter minutes: ";
-  cin >> time.minutes;
+  for (int i = 0; i < arrSize; i++) {
+		arr[i] = rand() % 100;
+	}
 
-  cout << "Enter minutes to add: ";
-  cin >> minutesToAdd;
-
-  if (time.hours > 24 || time.hours < 0) {
-    cout << "Wrong hours, must be between 0 and 24" << endl;
-    return;
+  cout << "Array: ";
+  for (int i = 0; i < arrSize; i++) {
+    cout << arr[i] << " ";
   }
+  cout << endl;
 
-  if (time.minutes > 60 || time.minutes < 0) {
-		cout << "Wrong minutes, must be between 0 and 60" << endl;
-    return;
+  cout << "Sorted array in ascending order: ";
+
+  for (int i = 0; i < arrSize; i++) {
+    for (int j = 0; j < arrSize - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
 	}
 
-	time.minutes += minutesToAdd;
+  for (int i = 0; i < arrSize; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 
-  if (time.minutes > 60) {
-		time.hours += time.minutes / 60;
-		time.minutes %= 60;
+	cout << "Sorted array in descending order: ";
+
+  for (int i = 0; i < arrSize; i++) {
+    for (int j = 0; j < arrSize - 1; j++) {
+      if (arr[j] < arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
 	}
 
-  if (time.hours > 24) {
-		time.hours %= 24;
+  for (int i = 0; i < arrSize; i++) {
+		cout << arr[i] << " ";
 	}
-
-	cout << "Time: " << time.hours << ":" << time.minutes << endl;
+	cout << endl;
 }
 
 void problem2() {
-  Time startTime{};
-  Time endTime{};
+  const int arrSize = 12;
 
-  cout << "Enter start time hours: ";
-  cin >> startTime.hours;
+  int arr[arrSize]{};
 
-  cout << "Enter start time minutes: ";
-  cin >> startTime.minutes;
+  srand(time(NULL));
 
-  cout << "Enter end time hours: ";
-  cin >> endTime.hours;
-
-  cout << "Enter end time minutes: ";
-  cin >> endTime.minutes;
-
-  if (startTime.hours > 24 || startTime.hours < 0) {
-		cout << "Wrong start time hours, must be between 0 and 24" << endl;
-		return;
-	}
-
-  if (startTime.minutes > 60 || startTime.minutes < 0) {
-		cout << "Wrong start time minutes, must be between 0 and 60" << endl;
-		return;
-	}
-
-  if (endTime.hours > 24 || endTime.hours < 0) {
-		cout << "Wrong end time hours, must be between 0 and 24" << endl;
-		return;
-	}
-
-  if (endTime.minutes > 60 || endTime.minutes < 0) {
-		cout << "Wrong end time minutes, must be between 0 and 60" << endl;
-		return;
-	}
-
-	int hours = endTime.hours - startTime.hours;
-	int minutes = endTime.minutes - startTime.minutes;
-
-
-  if (minutes < 0) {
-		hours--;
-		minutes += 60;
-	}
-
-  if (hours < 0) {
-    cout << "Wrong time, end time must be after start time" << endl;
-    return;
+  for (int i = 0; i < arrSize; i++) {
+    arr[i] = rand() % 200 - 100;
   }
 
-	cout << "Time: " << hours << ":" << minutes << endl;
+  cout << "Array: ";
+  for (int i = 0; i < arrSize; i++) {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+
+  int max = arr[0];
+  int maxIndex = 0;
+
+  for (int i = 0; i < arrSize; i++) {
+    if (arr[i] > max) {
+			max = arr[i];
+			maxIndex = i;
+		}
+	}
+
+  // change all negatives to 0 that are before max
+  for (int i = 0; i < maxIndex; i++) {
+    if (arr[i] < 0) {
+			arr[i] = 0;
+		}
+  }
+
+  cout << "Chnaged negativies to 0: ";
+  for (int i = 0; i < arrSize; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 }
 
